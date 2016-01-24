@@ -1,0 +1,34 @@
+/*css rest*/
+*{ font-size:14px; line-height:26px; color:#50555b;}
+html{ background-color:#f2f2f2;}
+
+
+/*订单状态begin*/
+.order-status{ width:100%;}
+.order-status img{ width:100%;}
+/*订单状态end*/
+
+
+/*订单信息begin*/
+.order-data{ width:96%; padding:12px 6px; background-color:#fff; border-bottom:1px solid #e9e9e9; border-top:1px solid #e9e9e9; margin-bottom:6px;}
+.order-data span{ color:#9c9c9c;}
+.ordder-address{ overflow:hidden;}
+.ordder-address *{ float:left;}
+.ordder-address p{ color:#9c9c9c; width:78%;}
+/*订单信息end*/
+
+
+/*付款信息begin*/
+.ordrt-pay{ border-bottom:1px solid #e9e9e9; margin-bottom:4px; overflow:hidden;}
+.discount{ overflow:hidden;}
+.order-name{ float:left;}
+.price{ float:right;}
+.order-icon{ overflow:hidden; text-align:center; margin:0 auto;}
+.order-icon a{ float:right; border:1px solid #bbbaba; border-radius:2px; color:#50555b; font-size:12px; margin:10px 4px 3px; padding:0 16px;}
+/*付款信息end*/
+
+
+/*客服begin*/
+.order-service{ text-align:center; background-color:#fff; width:100%; padding:12px 0;}
+.phone{ color:#00afff;}
+/*客服end*/

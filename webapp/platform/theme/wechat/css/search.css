@@ -1,0 +1,20 @@
+/*css rest*/
+*{ font-size:14px;}
+html{ background-color:#f2f2f2;}
+
+/*header begin*/
+nav{ background-color:#00afff; height:50px; position:fixed; top:0; left:0; width:100%; z-index:100; line-height:50px;}
+nav a{ position:absolute; left:0; top:0; color:#fff; padding:0 10px; font-size:14px;}
+.title{ color:#fff; text-align:center;}
+/*header end*/
+
+
+/*tab begin*/
+.box{ margin-top:50px;}
+.menu{overflow:hidden}
+.menu li{float:left;width:50%;text-align:center; line-height:30px;}
+.content{width:100%;}
+.current{color:#00afff; width:220px; margin:0 auto 10px;}
+.others{background-color:#fff; color:#50555b;}
+section{ padding:6px;}
+/*tab end*/

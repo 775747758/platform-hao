@@ -1,0 +1,40 @@
+/*css rest*/
+*{ font-size:14px;}
+html{ background-color:#f2f2f2;}
+
+
+/*tab begin*/
+.menu{overflow:hidden}
+.menu li{float:left;width:25%;text-align:center; line-height:30px;}
+.content{width:100%;}
+.current{color:#00afff;}
+.others{background-color:#fff; color:#50555b;}
+/*tab end*/
+
+
+/*nothing begin*/
+.nothing-img{ width:40%; margin:0 auto; padding-top:66px;}
+.nothing-text{ text-align:center; color:#50555b; font-size:18px; line-height:58px;}
+.nothing-go{ padding:6px 40px; background-color:#00afff; margin:auto; width:80px;  text-align:center; }
+.nothing-go a{ color:#fff; font-size:18px; font-weight:bold;}
+/*nothing end*/
+
+
+/*order-list begin*/
+.list li{ margin:8px 0; background-color:#fff; padding:6px 0 9px 0; border-bottom:1px solid #e9e9e9; border-top:1px solid #e9e9e9;}
+.list-tit-name{ width:100%; overflow:hidden; line-height:30px;}
+.list-tit-name h5{ float:left; margin-left:6px; color:#50555b;}
+.list-tit-name p{ float:right; margin-right:6px; color:#FC171B;}
+
+.clearfix{ background-color:#f2f2f2; width:98%; padding:10px 6px; color:#50555b; margin-bottom:4px;}
+.clearfix-img{ width:80px; height:60px; margin-right:6px;float:left;}
+
+.total{ padding:8px 0; border-bottom:1px solid #e9e9e9; overflow:hidden;}
+.total p{ font-size:10px; color:#9c9c9c; float:right;}
+.total span{ font-size:12px;}
+
+.function{ overflow:hidden; margin-top:9px;}
+.function p{ float:right; border:1px solid #BBBABA; padding:4px 10px; margin:0 4px; color:#50555b; font-size:12px; border-radius:2px;}
+
+.price{color:#50555b;}
+/*order-list end*/

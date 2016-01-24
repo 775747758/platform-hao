@@ -1,0 +1,16 @@
+/*css rest*/
+*{ font-size:14px;}
+html{ background-color:#f2f2f2;}
+
+
+
+/**/
+.shipping-address{ width:100%; border-top:1px solid #e5e5e5;}
+.contacts{ border-bottom:1px solid #e5e5e5;}
+.shoping-text{ border:none; width:100%; line-height:40px; padding:0 6px;}
+/**/
+
+
+/**/
+.preservation{ width:100%; line-height:36px; text-align:center; position:fixed; bottom:0px; background-color:#00afff; color:#fff;}
+/**/

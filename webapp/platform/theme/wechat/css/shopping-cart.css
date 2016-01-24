@@ -1,0 +1,58 @@
+/*购物车页顶部begin*/
+.shopping-cart .top{width:100%;height:44px;border-bottom:1px solid #e5e5e5;background-color: #f7f7f7;line-height: 44px;}
+.top .pro-num{float:left;display:inline-block;*display: inline;*zoom:1;font-size:16px;margin-left: 10px;}
+.pro-num input,.pro-num p{display: inline-block;*display: inline;*zoom:1;margin-right: 10px;}
+.top .continue{float:right;display:inline-block;*display: inline;*zoom:1;color: #666;margin-right: 10px;}
+/*购物车页顶部end*/
+
+/*商品列表begin*/
+.list li{position:relative;top:0;left:0;min-height:100px;max-height: 345px;padding-top: 5px;border-bottom: 1px solid #e5e5e5;overflow: hidden;}
+.list .trash{position:absolute;right:15px;top:45%;width:18px;height:18px;background:url(../images/base-icon.png) no-repeat -97px -82px;z-index: 2;}
+.list .present{position:absolute;right:15px;top:45%;width:18px;height:18px;background:url(../images/base-icon.png) no-repeat -132px -71px;z-index: 2;}
+.list .active{width: 94%;min-height: 24px;max-height: 42px;padding: 0 1%;padding-top: 8px;margin: 0 auto;background-color: #feebdc;overflow: hidden;}
+.active .text{color: #ef7c61;font-size: 12px;overflow: hidden;vertical-align: top;}
+.active .tag{width: 44px;height: 17px;display: inline-block;*display: inline;*zoom:1;background: url(../images/goods_tag.png) no-repeat;}
+.tag.manjian{background-position: 0 -1px;}
+.tag.zhijiang{background-position: 0 -28px;}
+.tag.manzeng{background-position: 0 -55px;}
+.tag.fanxian{background-position: 0 -82px;}
+.tag.zhuanxiang{background-position: 0 -109px;}
+
+.list .container{position:relative;top:0;left:0;margin-top: 10px;height: 90px;}
+.container .show{float: left;display: inline-block;*display: inline;*zoom: 1;}
+.show input{display: inline-block;*display: inline;*zoom:1;vertical-align: top;margin-top: 25px;margin-left: 10px;}
+.show a{position: absolute;top: 0;left: 32px;width: 100%;height: 100%;}
+.show a img{width:60px;height:60px;overflow: hidden;margin-top: 5px;}
+
+.container .info{width: 50%;position: absolute;left: 110px;}
+.info .name{height: 25px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
+.info .price{color: #9c9c9c;margin-bottom: 6px;}
+.price strong{color:#fb0000;font-weight:normal;margin-left: 10px;font-size: 15px;}
+
+.num-edit p,.num-edit div{float:left;display: inline-block;*display: inline;*zoom:1;}
+.num-edit p{color: #9c9c9c;margin-right: 10px;}
+.num-edit .number{width:40px;height:20px;border-top:1px solid #c8c8c8;border-bottom:1px solid #c8c8c8;line-height:20px;font-size:14px;text-align:center;}
+.num-edit .edit{width:15px;height:20px;line-height:5px;background-color:#e6e6e6;border:1px solid #c8c8c8;}
+.num-edit div{position: relative;top: 0;left: 0;z-index: 1;}
+/*商品列表end*/
+
+/*结算begin*/
+.account{width: 94%;margin: 0 auto;margin-top: 10px;}
+.account .delete{margin-bottom: 15px;}
+.delete i{width:14px;height:17px;background:url(../images/base-icon.png) no-repeat -97px -82px;vertical-align: top;margin-top: 2px;margin-right: 7px;display: inline-block;*display: inline;*zoom: 1;}
+.delete .delete-cur{margin-right: 17px;}
+
+.account .total{max-height: 102px;background-color: #fff1e2;margin-bottom: 17px;font-size: 15px;overflow: hidden;}
+.total .decrease{width: 96%;height: 50px;margin: 0 auto;border-bottom: 1px dotted #e1d4c4;overflow: hidden;}
+.decrease p{float: left;display: inline-block;*display: inline;*zoom:1;line-height: 50px;margin-left: 20px;}
+.decrease .discount{margin-right: 13px;}
+.total strong{font-weight: normal;font-size: 16px;}
+.decrease .fanxian strong,.final strong{color: #e03629;font-weight: normal;}
+.total .final{height: 50px;width: 96%;margin: 0 auto;line-height: 50px;}
+.final p{margin-left: 20px;}
+
+.account .buy{margin-bottom: 13px;}
+.account .buy input{width: 100%;height:38px;color:#fff;font-size:16px;font-weight:normal;letter-spacing:1px;line-height:38px;background-color:#F7762E;font-family: 微软雅黑;}
+/*结算end*/
+
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.unitever.module.advertisement.dao.manual.AdvertisementDAO">
+
+	<resultMap type="Advertisement" id="resultAdvertisement">  
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <association property="user" javaType="User">
+        	<id column="id_user" property="id" />  
+        </association>
+	</resultMap>
+	
+	<insert id="save" parameterType="Advertisement">
+		insert into ds_advertisement(id,name,id_user) value(#{id},#{name},#{user.id})
+	</insert>
+	
+	<select id="getAll" resultMap="resultAdvertisement" >
+   		select * From ds_advertisement
+	</select>
+
+	<delete id="delete" parameterType="String">
+		delete from  ds_advertisement where id=#{id} 
+	</delete>
+	<select id="get" resultMap="resultAdvertisement" parameterType="String">
+   		select * From ds_advertisement 
+   		<where> 
+			id =#{id}
+		</where> 
+	</select>
+	
+	<select id="getByUserId" resultMap="resultAdvertisement" parameterType="String">
+   		select * From ds_advertisement 
+   		<where> 
+			id_user =#{id}
+		</where> 
+	</select>
+	
+	<update id="update" parameterType="Advertisement">
+		update ds_advertisement
+		<set>
+			<if test="name != null">name=#{name},</if>
+		</set>
+		where id=#{id}
+	</update>
+</mapper>

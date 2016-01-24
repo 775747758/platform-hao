@@ -1,0 +1,15 @@
+.mainNav{
+	position:fixed;
+	left:0;
+	bottom:0;
+	width:100%;
+	background-image:url(nav_bg.png);
+	border-top:1px solid #E5E5E5;
+	border-bottom:1px solid #E5E5E5;
+	overflow:hidden;
+	background-color:#fff;
+	}
+.mainNav a{ float:left; text-align:center; margin:10px 0 4px; color:#8c8f97;}
+.mainNav img{ width:26px; margin:0 auto;}
+.nav-icon{ width:33%;}
+.nav-icon span{ line-height:20px;}

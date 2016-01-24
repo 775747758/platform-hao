@@ -1,0 +1,180 @@
+@charset "utf-8";
+/*鼠标按下到松开之前{去掉超链接点击时出现的虚线框}*/
+a:active {
+	outline: none;
+	star: expression(this.onFocus=this.blur());
+	}
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	outline: none;
+	word-wrap: break-word;/*能使其容器如DIV的内容自动换行*/
+	}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td
+	{margin: 0;padding: 0;border: 0;outline: 0;vertical-align: baseline;}
+img {border: none; display:block;}
+li{ list-style:none;}
+a{text-decoration:none;
+	-webkit-transition-property: color, background;
+	-webkit-transition-duration: 0.3s, 0.3s;
+	-webkit-transition-timing-function: ease-in, ease-in;
+	}
+/*表格{表格固定大小，但是内容不撑破表格一般使用table-layout: fixed；边框重*/
+table {table-layout: fixed;border-collapse: collapse;}
+body, html {
+	overflow-x: hidden;
+	-webkit-text-size-adjust: none;/*禁用Webkit内核浏览器的文字大小调整功能（方便小于12px的英文字体阅读）*/
+	}
+/*IOS环境下的按钮都是经过美化的，但通常我们在设计web app的时候不需要这些看上去老土的样式*/
+input {
+	-webkit-appearance: none;
+	}
+/* 重置安卓Pad下面input焦点状态白底的样式 */  
+input{
+   -webkit-user-modify: read-write-plaintext-only;
+   -webkit-tap-highlight-color:#3072af;
+	}
+	input[type="reset"]::-moz-focus-inner,
+	input[type="button"]::-moz-focus-inner,
+	input[type="submit"]::-moz-focus-inner,
+	input[type="file"] > input[type="button"]::-moz-focus-inner{
+		border:none;padding:0;
+	}
+/*
+	http://meyerweb.com/eric/tools/css/reset/ 
+	v1.0 | 20080212 
+ 	-----------------------------------------
+	J.Chen edited | 2014(yy)/04(mm)/04(dd) 
+	http://jchen.lofter.com
+*/
+
+
+body {
+	font-family: "Helvetica Neue",\5FAE\8F6F\96C5\9ED1,Tohoma; /* mac字体，微软雅黑，xp字体，宋体有点问题，所以不用，除非自写*/
+}
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+/* remember to define focus styles! */
+:focus { outline: 0; }
+/* remember to highlight inserts somehow! */
+ins { text-decoration: none; }
+del { text-decoration: line-through; }
+/* tables still need 'cellspacing="0"' in the markup */
+table { border-collapse: collapse; border-spacing: 0; }
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  float:none !important;
+}
+table, th, td {
+  vertical-align: middle;
+}
+em,i {font-style:normal;}
+/* Remove annoying border on linked images. */
+a img { border: none; text-decoration:none; }
+
+/* Remember to define your own focus styles! */
+:focus { outline: 0; }
+/* #Clearing
+================================================== */
+.clearfix:before, .clearfix:after { content: ""; display: table; font-size:0 !important; line-height:0!important; height:0!important;}  
+.clearfix:after { clear: both; }  
+  
+/* IE 6/7 */  
+.clearfix { *zoom: 1; } 
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+
+
+
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+/* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+/* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+}
+
+
+
+
+
+
+
+/*
+
+ Smaller than standard 960 (devices and browsers)
+@media only screen and (max-width: 959px) {}
+
+ Tablet Portrait size to standard 960 (devices and browsers) 
+@media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+ All Mobile Sizes (devices and browser) 
+@media only screen and (max-width: 767px) {}
+
+ Mobile Landscape Size to Tablet Portrait (devices and browsers) 
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) 
+@media only screen and (max-width: 479px) {}
+
+*/
+

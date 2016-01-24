@@ -1,0 +1,22 @@
+/*css rest*/
+*{ font-size:14px;}
+html{ background-color:#f2f2f2;}
+
+
+/**/
+.currt{ background-color:#364668; color:#fff;}
+.other{ background-color:#fff; border-bottom:1px solid #e5e5e5;}
+/**/
+
+
+
+/*结算begin*/
+.plus-address{ position:fixed; bottom:0; text-align:center; width:100%; background-color:#fff; border-top:1px solid #e9e9e9;}
+.currt-box{ overflow:hidden;}
+.name{ float:left;}
+.phone{ float:right;}
+/**/
+/**/
+.plus-address p{ line-height:26px; width:120px; background-color:#00afff; border-radius:20px; color:#fff; margin:10px auto;}
+.other-box{ overflow:hidden;}
+/*结算end*/
