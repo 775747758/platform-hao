@@ -95,9 +95,9 @@
 <!--收货地址 begin-->
 	<div class="shipping-address">
  		<div class="address-header">收货信息：</div>
-     	<div class="contacts">收货人<input type="text" id="receiver" class="shoping-text">${shoppingCartVo.customer.realName}</div>
-    	<div class="contacts">手机号码<input type="text" id="receiverPhoneNum" class="shoping-text">${shoppingCartVo.customer.phone}</div>
-     	<div class="contacts">详细地址<input type="text" id="receiveAddress" class="shoping-text">${shoppingCartVo.customer.address}</div>
+     	<div class="contacts">收货人<input type="text" id="receiver" class="shoping-text" value="${shoppingCartVo.customer.realName}"></div>
+    	<div class="contacts">手机号码<input type="text" id="receiverPhoneNum" class="shoping-text" value="${shoppingCartVo.customer.phone}"></div>
+     	<div class="contacts">详细地址<input type="text" id="receiveAddress" class="shoping-text" value="${shoppingCartVo.customer.address}"></div>
  	</div>
 <!--收货地址 end-->
 
