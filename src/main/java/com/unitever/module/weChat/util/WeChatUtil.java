@@ -355,6 +355,7 @@ import java.io.OutputStream;
 import java.net.ConnectException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -373,12 +374,21 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.unitever.module.order.model.Order;
+import com.unitever.module.ordergoods.model.OrderGoods;
 import com.unitever.module.user.model.User;
 import com.unitever.module.user.service.UserService;
 import com.unitever.platform.core.spring.SpringContextHolder;
 import com.unitever.platform.core.web.context.ServletContextMonitor;
 import com.unitever.platform.util.DateUtil;
 import com.unitever.platform.util.JsonUtil;
+import com.unitever.platform.util.mail.MailSendHelper;
+
+import weixin.popular.api.MessageAPI;
+import weixin.popular.bean.templatemessage.TemplateMessage;
+import weixin.popular.bean.templatemessage.TemplateMessageItem;
+import weixin.popular.bean.templatemessage.TemplateMessageResult;
+import weixin.popular.support.TokenManager;
 
 @Component
 public class WeChatUtil implements ServletContextMonitor {
@@ -661,4 +671,81 @@ public class WeChatUtil implements ServletContextMonitor {
 	public void destroyed(ServletContext context) {
 		// TODO Auto-generated method stub
 	}
+	
+
+	/*
+	 * 通知工作人员，订单已经支付
+	 */
+	public static void sendTemplateMessage(Order order) {
+		// 准备数据
+		LinkedHashMap<String, TemplateMessageItem> data = new LinkedHashMap<String, TemplateMessageItem>();
+		TemplateMessageItem item1 = new TemplateMessageItem(DateUtil.getCurrDateMinString(), "#000000");
+		TemplateMessageItem item2 = null;
+		item2 = new TemplateMessageItem("在线支付", "#000000");
+		TemplateMessageItem item3 = new TemplateMessageItem(order.getReceiver() + "|" + order.getReceiverPhoneNum(),
+				"#000000");
+		TemplateMessageItem item4 = new TemplateMessageItem("配送地址", "#000000");
+		TemplateMessageItem item5 = new TemplateMessageItem(order.getReceiveAddress() + "", "#000000");
+		TemplateMessageItem item6 = new TemplateMessageItem("您收到了一条新的订单!","#000000");
+		StringBuffer remark = new StringBuffer();
+		remark.append("订单号：" + order.getCode() + "\r\n");
+		remark.append("商品数量：" + order.getTotalCount() + "\r\n");
+		remark.append("订单金额：" + order.getTotalPrice() + "元\r\n");
+		remark.append("订单商品：");
+		for (OrderGoods orderGoods : order.getOrderGoodsList()) {
+			remark.append(orderGoods.getGoods().getName() + "x" + orderGoods.getCount() + "|");
+		}
+		TemplateMessageItem item7 = new TemplateMessageItem(
+				remark.toString().substring(0, remark.toString().length() - 1), "#000000");
+		data.put("first", item6);
+		data.put("tradeDateTime", item1);
+		data.put("orderType", item2);
+		data.put("customerInfo", item3);
+		data.put("orderItemName", item4);
+		data.put("orderItemData", item5);
+		data.put("remark", item7);
+		TemplateMessage templateMessage = new TemplateMessage();
+		templateMessage.setUrl("http://"+order.getCustomer().getUser().getDomain()+"/platform/weChat/orderList?customerId="+order.getCustomer().getId());
+		templateMessage.setTemplate_id(order.getCustomer().getUser().getCustomerServiceUrl());// 设置模板ID，必须要在微信公众平台管理后台添加才可以(新订单通知)
+		templateMessage.setTouser(order.getCustomer().getUser().getBusinessCultureUrl());
+		templateMessage.setData(data);
+		TemplateMessageResult result = MessageAPI.messageTemplateSend(getAccessToken(order.getCustomer().getUser()), templateMessage);
+	}
+	
+	/*
+	 * 订单已发货
+	 */
+	public static void sendGoodsNotice(Order order) {
+		// 准备数据
+		LinkedHashMap<String, TemplateMessageItem> data = new LinkedHashMap<String, TemplateMessageItem>();
+		StringBuffer orderContent=new StringBuffer();
+		for (OrderGoods orderGoods : order.getOrderGoodsList()) {
+			orderContent.append(orderGoods.getGoods().getName() + "x" + orderGoods.getCount() + "|");
+		}
+		TemplateMessageItem item1 = new TemplateMessageItem(orderContent.toString().substring(0,orderContent.toString().length()-1), "#000000");
+		TemplateMessageItem item2 = new TemplateMessageItem("官方配送", "#000000");
+		TemplateMessageItem item3 = new TemplateMessageItem(order.getCode(),"#000000");
+		TemplateMessageItem item4 = new TemplateMessageItem(order.getReceiveAddress(), "#000000");
+		TemplateMessageItem first = new TemplateMessageItem("亲，您的货物已发货！","#000000");
+		StringBuffer remarkBuffer = new StringBuffer();
+		remarkBuffer.append("订单总金额：" + order.getTotalPrice() + "元\r\n");
+		remarkBuffer.append("下单时间：" + order.getDate() + "\r\n");
+		remarkBuffer.append("物流名称：" + order.getLogisticName() + "\r\n");
+		remarkBuffer.append("物流单号：" + order.getLogisticNum() + "\r\n");
+		remarkBuffer.append("如有问题请联系我们！请点击查看订单详情！" + "\r\n");
+		TemplateMessageItem remark = new TemplateMessageItem(remarkBuffer.toString().substring(0, remarkBuffer.toString().length() - 1), "#000000");
+		data.put("first", first);
+		data.put("keyword1", item1);
+		data.put("keyword2", item2);
+		data.put("keyword3", item3);
+		data.put("keyword4", item4);
+		data.put("remark", remark);
+		TemplateMessage templateMessage = new TemplateMessage();
+		templateMessage.setUrl("http://"+order.getCustomer().getUser().getDomain()+"/platform/weChat/orderList?customerId="+order.getCustomer().getId());
+		templateMessage.setTemplate_id(order.getCustomer().getUser().getWealthModeUrl());// 设置模板ID，必须要在微信公众平台管理后台添加才可以(新订单通知)
+		templateMessage.setTouser(order.getCustomer().getWeChatNum());
+		templateMessage.setData(data);
+		TemplateMessageResult result = MessageAPI.messageTemplateSend(getAccessToken(order.getCustomer().getUser()), templateMessage);
+	}
+	
 }

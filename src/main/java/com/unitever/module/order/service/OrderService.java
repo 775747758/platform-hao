@@ -80,10 +80,12 @@ public class OrderService {
 		try {
 			order.setFreight(freight);
 			Customer customer = customerService.getCustomerWithId(customerId);
-			customer.setAddress(URLDecoder.decode(receiveAddress, "UTF-8"));
-			customer.setRealName(URLDecoder.decode(receiver, "UTF-8"));
-			customer.setPhone(URLDecoder.decode(receiverPhoneNum, "UTF-8"));
-			customerService.update(customer);
+			Customer newCustomer=new Customer();
+			newCustomer.setId(customer.getId());
+			newCustomer.setAddress(URLDecoder.decode(receiveAddress, "UTF-8"));
+			newCustomer.setRealName(URLDecoder.decode(receiver, "UTF-8"));
+			newCustomer.setPhone(URLDecoder.decode(receiverPhoneNum, "UTF-8"));
+			customerService.update(newCustomer);
 			order.setCustomer(customer);
 			/*if(Customer.CUSTOMER_KIND_UNAGENT.equals(customer.getKind())) {
 				order.setKind(Order.ORDER_KIND_FIRST);
@@ -143,6 +145,7 @@ public class OrderService {
 		}
 		//清空该用户的购物车
 		shoppingCartServive.deleteWithCustomer(order.getCustomer());
+		WeChatUtil.sendTemplateMessage(order);
 	}
 	/**
 	 * 根据id获取订单信息
@@ -230,10 +233,12 @@ public class OrderService {
 	 */
 	public void doDeliver(Order order) {
 		orderDAO.update(order);
-		Customer customer = customerService.getCustomerWithId(order.getCustomer().getId()); 
-		String str = WeChatUtil.httpRequest(RequestUrlUtil.getSendMessageWithOpenIdUrl(WeChatUtil.getAccessToken(customer.getUser())), "POST", 
-				"{\"touser\":\""+customer.getWeChatNum()+"\",\"text\":{\"content\":\"您的货物已经发出，请耐心等待。\n物流名称："+order.getLogisticName()+"。\n物流单号："+order.getLogisticNum()+"\"},\"msgtype\":\"text\"}");
-		System.out.println(str);
+		//Customer customer = customerService.getCustomerWithId(order.getCustomer().getId()); 
+//		String str = WeChatUtil.httpRequest(RequestUrlUtil.getSendMessageWithOpenIdUrl(WeChatUtil.getAccessToken(customer.getUser())), "POST", 
+//				"{\"touser\":\""+customer.getWeChatNum()+"\",\"text\":{\"content\":\"您的货物已经发出，请耐心等待。\n物流名称："+order.getLogisticName()+"。\n物流单号："+order.getLogisticNum()+"\"},\"msgtype\":\"text\"}");
+		//System.out.println(str);
+		Order realOrder=orderDAO.get(order.getId());
+		WeChatUtil.sendGoodsNotice(realOrder);
 	}
 	/**
 	 * 确认收货

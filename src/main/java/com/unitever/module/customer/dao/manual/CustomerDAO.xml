@@ -49,7 +49,7 @@
 			<if test="mediaId != null">id_media=#{mediaId},</if>
 			<if test="user !=null and user.id != null">id_user=#{user.id},</if>
 		</set>
-		where id=#{id}
+		where id=${id}
 	</update>
 	<select id="getCustomerListWithCustomer" resultMap="resultCustomer" parameterType="Customer">
 		select * from ds_customer 

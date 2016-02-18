@@ -210,7 +210,7 @@ public class WeChatService {
 			if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {// 文本消息
 				// 接收用户发送的文本消息内容
 				String content = requestMap.get("Content");
-				System.out.println("content:"+content);
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<content:"+content+"toUserName:"+toUserName);
 				// 默认回复此文本消息
 				User user = userService.getUserWithWeChatNum(toUserName);
 				TextMessage textMessage = new TextMessage();

@@ -1,5 +1,7 @@
 package com.unitever.platform.util.mail;
 
+import java.util.Properties;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
@@ -16,14 +18,28 @@ public class MailSendHelper {
 
 	private static final Log log = LogFactory.getLog(MailSendHelper.class);
 
-	public static void sendText(String toMail, String subject, String content) {
-		if (StringUtils.isBlank(toMail) || subject == null || content == null) {
-			throw new RuntimeException("发送邮件参数异常：toMail：" + toMail + " subject:" + subject + " content:" + content);
+	public static void sendText(String subject, String content) {
+		if (subject == null || content == null) {
+			throw new RuntimeException("发送邮件参数异常subject:" + subject + " content:" + content);
 		}
-		JavaMailSenderImpl sender = SpringContextHolder.getBeanOneOfType(JavaMailSenderImpl.class);
+		JavaMailSenderImpl sender = new JavaMailSenderImpl();
+		sender.setHost("smtp.163.com");
+		//JavaMailSenderImpl sender = SpringContextHolder.getBeanOneOfType(JavaMailSenderImpl.class);
+		sender.setUsername("dengwenjie789@163.com");
+		sender.setPassword("88452387");
+		
+		//配置文件，用于实例化java.mail.session    
+        Properties pro = System.getProperties();    
+            
+        //登录SMTP服务器,需要获得授权，网易163邮箱新近注册的邮箱均不能授权。    
+        //测试 sohu 的邮箱可以获得授权    
+//        pro.put("mail.smtp.auth","true");    
+//        pro.put("mail.smtp.socketFactory.port", "25");    
+//        pro.put("mail.smtp.socketFactory.fallback", "false");   
+//		sender.setJavaMailProperties(pro); 
 		SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setFrom(sender.getUsername());
-		mail.setTo(toMail);
+		mail.setTo("775747758@qq.com");
 		mail.setSubject(subject);
 		mail.setText(content);
 		sender.send(mail);
